@@ -1,0 +1,19 @@
+﻿
+@model WebApplication2.ViewModels.ResultViewModel
+
+@{
+    ViewData["Title"] = "Result";
+}
+
+<h2>Resulting List</h2>
+
+<br />
+
+
+@foreach (var item in Model.TheList)
+
+{
+    <p>@item.Element</p>
+
+
+}

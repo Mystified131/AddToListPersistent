@@ -1,0 +1,25 @@
+﻿
+@model WebApplication2.ViewModels.RemoveViewModel
+
+@{
+    ViewData["Title"] = "Remove";
+}
+
+<h2>Remove</h2>
+
+<div>
+    <form action='Remove' method='POST' align="left">
+        <label>
+            Which item would you like to delete from the list?
+        </label><br><br />
+        <select name="NewElement1">
+            @foreach (var item in Model.TheList)
+            {
+                <option value=@item.ID>@item.Element</option>}
+        </select>
+
+        <br /><br />
+        <input type="submit" value="Remove Item" />
+    </form>
+</div>
+

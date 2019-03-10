@@ -334,6 +334,35 @@ namespace WebApplication2.Controllers
                 return Redirect("/");
             }
         }
+
+        [HttpGet]
+        public IActionResult RemoveRandom()
+        {
+            List<Listelement> TheList = context.Listelements.ToList();
+
+            if (TheList.Count > 0)
+            {
+                RemoveRandomViewModel removeRandomViewModel = new RemoveRandomViewModel();
+
+                Random random = new Random();
+                int obj = random.Next(0, TheList.Count());
+
+                removeRandomViewModel.Remranobj = TheList[obj];
+
+                TheList.RemoveAll(x => x.ID == obj);
+
+                context.Listelements.Remove(removeRandomViewModel.Remranobj);
+                context.SaveChanges();
+
+                return View(removeRandomViewModel);
+            }
+
+            else
+            {
+                return Redirect("/");
+            }
         }
+
+    }
         }
 

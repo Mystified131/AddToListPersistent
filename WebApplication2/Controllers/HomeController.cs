@@ -312,8 +312,28 @@ namespace WebApplication2.Controllers
             }
         }
 
+        [HttpGet]
+        public IActionResult Random()
+        {
+            List<Listelement> TheList = context.Listelements.ToList();
 
-    }
+            if (TheList.Count > 0)
+            {
+                RandomViewModel randomViewModel = new RandomViewModel();
 
+                Random random = new Random();
+                int obj = random.Next(0, TheList.Count());
 
-}
+                randomViewModel.Ranobj = TheList[obj];
+
+                return View(randomViewModel);
+            }
+
+            else
+            {
+                return Redirect("/");
+            }
+        }
+        }
+        }
+
